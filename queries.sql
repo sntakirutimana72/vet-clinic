@@ -109,3 +109,62 @@ SELECT species, AVG(escape_attempts) mean_escape
 FROM animals 
 WHERE EXTRACT(YEAR FROM date_of_birth) BETWEEN 1990 AND 2000 
 GROUP BY species;
+
+--------------------------------------------------------------------------
+-- MILESTONE 3
+--------------------------------------------------------------------------
+
+-- Queries for analytics 
+
+-- What animals belong to Melody Pond?
+SELECT anim.* FROM animals anim 
+  JOIN owners boss ON boss.id = anim.owner_id 
+WHERE boss.full_name = 'Melody Pond';
+
+-- List of all animals that are pokemon (their type is Pokemon).
+SELECT anim.* FROM animals anim 
+  JOIN species sp ON sp.id = anim.species_id  
+WHERE sp.name = 'Pokemon';
+
+-- List all owners and their animals, remember to include those that don't own any animal.
+SELECT name animal_name, full_name owner_name FROM owners boss 
+  LEFT JOIN animals anim ON anim.owner_id = boss.id 
+ORDER BY boss.id, boss.full_name;
+
+-- How many animals are there per species?
+SELECT sp.name species, COUNT(anim.species_id) animals_by_species 
+FROM animals anim 
+  JOIN species sp ON sp.id = anim.species_id 
+GROUP BY sp.name, anim.species_id;
+
+-- List all Digimon owned by Jennifer Orwell.
+SELECT anim.* FROM animals anim 
+  JOIN owners boss ON boss.id = anim.owner_id 
+  JOIN species sp ON sp.id = anim.species_id 
+WHERE boss.full_name = 'Jennifer Orwell' AND sp.name = 'Digimon';
+
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+SELECT anim.* FROM animals anim 
+  JOIN owners boss ON boss.id = anim.owner_id 
+WHERE boss.full_name = 'Dean Winchester' AND anim.escape_attempts = 0;
+
+-- Who owns the most animals?
+SELECT T.*
+FROM (
+  SELECT boss.*, COUNT(boss.id) total_animals 
+  FROM owners boss
+  JOIN animals anim 
+    ON anim.owner_id = boss.id 
+  GROUP BY boss.id
+) AS T 
+GROUP BY T.id, T.full_name, T.age, T.total_animals   
+HAVING T.total_animals = (
+  SELECT MAX(T3.total) 
+  FROM (
+    SELECT COUNT(bs.id) total
+    FROM owners bs
+    JOIN animals ai 
+      ON ai.owner_id = bs.id 
+    GROUP BY bs.id
+  ) AS T3 
+);
