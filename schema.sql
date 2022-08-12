@@ -13,3 +13,5 @@ CREATE TABLE IF NOT EXISTS animals(
   weight_kg       float not null,
   PRIMARY KEY(id)
 );
+
+ALTER TABLE animals ADD species varchar(40); 
