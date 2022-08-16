@@ -20,6 +20,12 @@ This repository includes files with plain SQL that can be used to recreate a dat
 - Twitter: [@nsteve72](https://twitter.com/nsteve72)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/steve-ntakirutimana/)
 
+👤 **Author2**
+
+- GitHub: [@githubridwan](https://github.com/ridwanediallo)
+- Twitter: [@twitterridwan](https://twitter.com/RidwaneD)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ridwan-diallo)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
