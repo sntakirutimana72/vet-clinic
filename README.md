@@ -18,7 +18,7 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 - GitHub: [@sntakirutimana72](../../../)
 - Twitter: [@nsteve72](https://twitter.com/nsteve72)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/steve-ntakirutimana/)
+- LinkedIn: [steve-ntakirutimana](https://linkedin.com/in/steve-ntakirutimana/)
 
 ## 🤝 Contributing
 
