@@ -59,3 +59,10 @@ CREATE TABLE IF NOT EXISTS visits (
   FOREIGN KEY (vet_id) REFERENCES vets (id) ON DELETE CASCADE,
   FOREIGN KEY (animal_id) REFERENCES animals (id) ON DELETE CASCADE
 );
+
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+ALTER TABLE owners ALTER COLUMN age DROP NOT NULL;
+
+CREATE INDEX animal_id_btree ON visits USING BTREE(animal_id) WHERE animal_id = 4;
+CREATE INDEX vet_id_btree ON visits USING BTREE(vet_id) WHERE vet_id = 2;
+CREATE INDEX email_btree ON owners USING BTREE(email) WHERE email = 'owner_18327@mail.com';
